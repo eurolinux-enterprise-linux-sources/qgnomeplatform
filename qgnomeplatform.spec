@@ -1,7 +1,7 @@
 
 Name:           qgnomeplatform
 Version:        0.3
-Release:        3%{?dist}
+Release:        5%{?dist}
 Summary:        Qt Platform Theme aimed to accommodate Gnome settings
 
 License:        LGPLv2+
@@ -9,6 +9,7 @@ URL:            https://github.com/MartinBriza/QGnomePlatform
 Source0:        https://github.com/MartinBriza/QGnomePlatform/archive/%{version}/QGnomePlatform-%{version}.tar.gz
 
 # Upstream patches
+Patch0:         qgnomeplatform-do-not-scale-font-twice.patch
 
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(udev)
@@ -55,6 +56,13 @@ make install INSTALL_ROOT=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Wed Feb 13 2019 Jan Grulich <jgrulich@redhat.com> - 0.3-5
+- Rebuild for Qt 5.9.7
+
+* Tue Jan 15 2019 Jan Grulich <jgrulich@redhat.com> - 0.3-4
+- Do not apply font scaling twice
+  Resolves: bz#1657282
+
 * Wed Oct 11 2017 Martin Briza <mbriza@redhat.com> - 0.3-3
 - Rebuild for Qt 5.9.2
 - Resolves: #1500861
